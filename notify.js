@@ -1,19 +1,21 @@
-var acc = require('./acc.js');
+var acc = require(process.argv[2]);
 
 var request = require('./request/main.js'); 
 request = request.defaults();
 
+var base = 'https://' + process.argv[3] + '.piratenpad.de';
+var padId = process.argv[4];
 
-request.get('https://ulm-chaos-macht-schule.piratenpad.de', function (error, response, body) {
+request.get(base, function (error, response, body) {
   if (!error && response.statusCode == 200) {
 
 	request.post({
-			url: 'https://ulm-chaos-macht-schule.piratenpad.de/ep/account/sign-in?cont=https%3a%2f%2fulm-chaos-macht-schule.piratenpad.de%2f'
+			url: base + '/ep/account/sign-in'
 			, form: {'email': acc.email, 'password' : acc.pw}
 		}, 
 		function (error, response, body) {
 			
-			request.get('https://ulm-chaos-macht-schule.piratenpad.de/1', function (err, response, body) {
+			request.get(base + '/' + padId, function (err, response, body) {
 				// get the latest version
 				var linkToLatestVersion = body.match(/[\w\d\/\-\.]*(latest')/gi);
 				linkToLatestVersion = linkToLatestVersion[0].replace(/\'/gi, '');
@@ -30,7 +32,7 @@ request.get('https://ulm-chaos-macht-schule.piratenpad.de', function (error, res
 })
 
 function getLatest(linkToLatestVersion) {
-		request.get('https://ulm-chaos-macht-schule.piratenpad.de' + linkToLatestVersion, function (err, response, body) {
+		request.get(base + linkToLatestVersion, function (err, response, body) {
 		var start = body.search('id="padcontent">') + 'id="padcontent">'.length;
 		var end = body.search("<!-- /padeditor -->");
 		var padContent = body.substring(start, end);
