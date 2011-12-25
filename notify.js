@@ -9,7 +9,7 @@ request.get('https://ulm-chaos-macht-schule.piratenpad.de', function (error, res
 
 	request.post({
 			url: 'https://ulm-chaos-macht-schule.piratenpad.de/ep/account/sign-in?cont=https%3a%2f%2fulm-chaos-macht-schule.piratenpad.de%2f'
-			, form: {'email': email, 'password' : pw}
+			, form: {'email': acc.email, 'password' : acc.pw}
 		}, 
 		function (error, response, body) {
 			
