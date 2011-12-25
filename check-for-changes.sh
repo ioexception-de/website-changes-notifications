@@ -1,5 +1,5 @@
 #!/bin/sh
-node notify.js ${2} ${3} ${4} > tmp_new.html
+node notify.js ${2} > tmp_new.html
 
 if ! cmp -s tmp_new.html tmp.html; then
 	# files are different

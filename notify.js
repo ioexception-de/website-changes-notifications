@@ -3,8 +3,7 @@ var acc = require(process.argv[2]);
 var request = require('./request/main.js'); 
 request = request.defaults();
 
-var base = 'https://' + process.argv[3] + '.piratenpad.de';
-var padId = process.argv[4];
+var base = 'https://' + acc.padDomain + '.piratenpad.de';
 
 request.get(base, function (error, response, body) {
   if (!error && response.statusCode == 200) {
@@ -15,7 +14,7 @@ request.get(base, function (error, response, body) {
 		}, 
 		function (error, response, body) {
 			
-			request.get(base + '/' + padId, function (err, response, body) {
+			request.get(base + '/' + acc.padId, function (err, response, body) {
 				// get the latest version
 				var linkToLatestVersion = body.match(/[\w\d\/\-\.]*(latest')/gi);
 				linkToLatestVersion = linkToLatestVersion[0].replace(/\'/gi, '');

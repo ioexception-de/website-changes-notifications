@@ -15,15 +15,17 @@ is discovered. The script should be executed via a cronjob.
 
 	git clone https://github.com/cmichi/piratenpad-notifications.git
 	cd piratenpad-notifications/
-	echo "exports.email = 'USER'; exports.pw = 'PW';" > acc.js
+	echo "exports.email = 'user'; exports.pw = 'pw'; exports.padDomain = 'subdomain'; exports.padId = 1;" > acc.js
 	
 	# initialize it
-	./check-for-changes.sh john@doe.de ./acc.js pad-subdomain padId
+	./check-for-changes.sh john@doe.de ./acc.js
 	
 Once initialized you should get a mail. If the script is started again 
 you will only get mails if something changed. 
 
 It might be a good idea to create a cronjob for the script!
+
+	15 * * * * ~/piratenpad-notifier/check-for-changes.sh john@doe.de ./acc.js
 		
 
 # License
