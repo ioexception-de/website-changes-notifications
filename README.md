@@ -3,7 +3,7 @@
 The so called "Piratepads" are a comfortable way to collaborate on documents. 
 You can easily set up your own pad via [piratenpad.de](http://piratenpad.de).
 
-We often use the pad for brainstorming and coordinating stuff, but I have lost
+I often use the pad for brainstorming and coordinating stuff, but I have lost
 track of the different pads.
 
 This script enables an easy way to keep track. It sends a mail once a new change
@@ -12,7 +12,7 @@ is discovered. The script should be executed as a cronjob.
 
 # Installation
 
-	git clone https://github.com/ioexception.de/piratenpad-notifications.git
+	git clone https://github.com/ioexception-de/piratenpad-notifications.git
 	cd piratenpad-notifications/
 	mkdir tmp/
 
