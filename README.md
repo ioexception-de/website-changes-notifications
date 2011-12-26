@@ -1,20 +1,13 @@
 # Readme
 
-The so called "Piratepads" are a very comfortable way to collaborate on 
-documents. You can easily set up your own pad via 
-[piratenpad.de](http://piratenpad.de).
+The so called "Piratepads" are a comfortable way to collaborate on documents. 
+You can easily set up your own pad via [piratenpad.de](http://piratenpad.de).
 
 We often use the pad for brainstorming and coordinating stuff, but I have lost
 track of the different pads.
 
 This script enables an easy way to keep track. It sends a mail once a new change
 is discovered. The script should be executed via a cronjob.
-
-
-# Todo
-
- * Unique file names for the temporary files
- * license notes to request``
 
 
 # Installation
@@ -42,6 +35,11 @@ This way you can easily get notifications for multiple pads.
 		
 
 # License
+
+This project only works with the [request](https://github.com/mikeal/request) library 
+by mikeal. request is licensed under Apache 2.0. 
+
+This project is licensed under MIT:
 
 	Copyright (c) 2011 Michael Mueller, <http://micha.elmueller.net/>
 	
