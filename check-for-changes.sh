@@ -1,9 +1,21 @@
 #!/bin/sh
-md5path=`which md5`
+# to execute this script:
+# 	./check-for-changes.sh john@doe.de ./config.js
+#
+
 nodepath=`which node`
 
-# hash the path to the path of the account config file
-tmpfilename=`$md5path -q ${2}`
+# the bash of the configuration-file in ${2} is used 
+# as a name for temporary files
+if [ "$(uname)" = "Linux" ]; 
+then
+	md5path=`which md5sum`
+	tmpfilename=`echo ${2} | $md5path | cut -f1 -d' '`
+else
+	# only tested on Darwin, should work on other *BSDs too
+	md5path=`which md5`
+	tmpfilename=`$md5path -q ${2}`
+fi
 
 localcopy="./tmp/$tmpfilename".html
 onlinecopy="./tmp/$tmpfilename"_new.html
@@ -17,8 +29,9 @@ then
 	cp $onlinecopy $localcopy
 fi
 
-if ! cmp -s $onlinecopy $localcopy; then
-	# files are different
+# are the files different?
+if ! cmp -s $onlinecopy $localcopy; 
+then
 	echo "sending mail.."
 	diff $onlinecopy $localcopy | mail -s "[Piratenpad] Changes ${2}" ${1}
 	
