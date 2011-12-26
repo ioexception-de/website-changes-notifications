@@ -1,21 +1,25 @@
 #!/bin/sh
-tmpname=`/sbin/md5 -q ${2}`
-/usr/local/bin/node ./notify.js ${2} > "$tmpname"_new.html
+# hash the path to the path of the account config file
+tmpfilename=`/sbin/md5 -q ${2}`
+localcopy="./tmp/$tmpfilename".html
+onlinecopy="./tmp/$tmpfilename"_new.html
+
+/usr/local/bin/node ./notify.js ${2} > $onlinecopy
 
 # temporary local copy already exists?
-if [ ! -f "$tmpname".html ]
+if [ ! -f $localcopy ]
 then
 	echo "initializing..."
-	cp "$tmpname"_new.html "$tmpname".html
+	cp $onlinecopy $localcopy
 fi
 
-if ! cmp -s "$tmpname"_new.html "$tmpname".html; then
+if ! cmp -s $onlinecopy $localcopy; then
 	# files are different
-	diff "$tmpname"_new.html "$tmpname".html | mail -s "[Piratenpad] Changes ${2}" ${1}
+	diff $onlinecopy $localcopy | mail -s "[Piratenpad] Changes ${2}" ${1}
 	echo "sending mail.."
 	
-	rm "$tmpname".html
-	mv "$tmpname"_new.html "$tmpname".html
+	rm $localcopy
+	mv $onlinecopy $localcopy
 else
 	echo "no changes..."
 fi
