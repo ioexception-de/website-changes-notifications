@@ -1,10 +1,14 @@
 #!/bin/sh
+md5path=`which md5`
+nodepath=`which node`
+
 # hash the path to the path of the account config file
-tmpfilename=`/sbin/md5 -q ${2}`
+tmpfilename=`$md5path -q ${2}`
+
 localcopy="./tmp/$tmpfilename".html
 onlinecopy="./tmp/$tmpfilename"_new.html
 
-/usr/local/bin/node ./notify.js ${2} > $onlinecopy
+$nodepath ./notify.js ${2} > $onlinecopy
 
 # temporary local copy already exists?
 if [ ! -f $localcopy ]
