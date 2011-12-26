@@ -32,8 +32,8 @@ you will only get mails if something changed.
 
 It might be a good idea to create a cronjob for the script:
 
-	*/15 * * * * cd ~/piratenpad-notifier/ && ./check-for-changes.sh "john@doe.de" "./pad1.js" 
-	*/15 * * * * cd ~/piratenpad-notifier/ && ./check-for-changes.sh "john@doe.de" "./pad2.js" 
+	*/15 * * * * cd ~/piratenpad-notifications/ && ./check-for-changes.sh "john@doe.de" "./pad1.js" 
+	*/15 * * * * cd ~/piratenpad-notifications/ && ./check-for-changes.sh "john@doe.de" "./pad2.js" 
 	...
 	
 This way you can easily get notifications for multiple pads.
