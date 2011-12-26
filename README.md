@@ -12,15 +12,19 @@ is discovered. The script should be executed as a cronjob.
 
 # Installation
 
-	git clone https://github.com/cmichi/piratenpad-notifications.git
+	git clone https://github.com/ioexception.de/piratenpad-notifications.git
 	cd piratenpad-notifications/
 	mkdir tmp/
-	echo "exports.email = 'user'; 			\
-		  exports.pw = 'pw';      			\
-		  exports.padDomain = 'subdomain'; 	\
-		  exports.padId = 1;" > acc.js
+
+Then create a file `acc.js`:
+
+	exports.email = 'john@doe.de';
+	exports.pw = 'pw';
+	exports.padDomain = 'subdomain';
+	exports.padId = 1;
 	
-	# initialize it
+And initialize it:
+
 	./check-for-changes.sh john@doe.de ./acc.js
 	
 Once initialized you should get a mail. If the script is started again 
