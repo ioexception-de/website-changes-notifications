@@ -19,8 +19,8 @@ fi
 
 if ! cmp -s $onlinecopy $localcopy; then
 	# files are different
-	diff $onlinecopy $localcopy | mail -s "[Piratenpad] Changes ${2}" ${1}
 	echo "sending mail.."
+	diff $onlinecopy $localcopy | mail -s "[Piratenpad] Changes ${2}" ${1}
 	
 	rm $localcopy
 	mv $onlinecopy $localcopy
