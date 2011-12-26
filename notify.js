@@ -1,9 +1,7 @@
 var acc = require(process.argv[2]);
 var request = require('./request/main.js'); 
-//request = request.defaults();
 
 var base = 'https://' + acc.padDomain + '.piratenpad.de';
-
 
 (function initiateSession() {
 	request.get(base, function (error, response, body) {
@@ -24,7 +22,7 @@ function login() {
 				// get the latest version of the pad content
 				var linkToLatestVersion = body.match(/[\w\d\/\-\.]*(latest')/gi);
 				linkToLatestVersion = linkToLatestVersion[0].replace("'", '');
-
+				
 				getLatest(linkToLatestVersion);
 			});			
 		}
@@ -39,7 +37,7 @@ function getLatest(linkToLatestVersion) {
 		
 		// strip all html tags 
 		padContent = padContent.replace(/(<[^>]+>)|(&nbsp;)/gi, '');
-		
+				
 		console.log(padContent.trim());
 	});
 }
