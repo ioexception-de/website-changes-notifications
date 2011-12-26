@@ -35,8 +35,8 @@ function getLatest(linkToLatestVersion) {
 		var end = body.search("<!-- /padeditor -->");
 		var padContent = body.substring(start, end);
 		
-		// strip all html tags 
-		padContent = padContent.replace(/(<[^>]+>)|(&nbsp;)/gi, '');
+		// strip all tags and entities
+		padContent = padContent.replace(/(<[^>]+>)|(&[#\w]+;)/gi, '');
 				
 		console.log(padContent.trim());
 	});

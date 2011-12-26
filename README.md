@@ -7,13 +7,14 @@ We often use the pad for brainstorming and coordinating stuff, but I have lost
 track of the different pads.
 
 This script enables an easy way to keep track. It sends a mail once a new change
-is discovered. The script should be executed via a cronjob.
+is discovered. The script should be executed as a cronjob.
 
 
 # Installation
 
 	git clone https://github.com/cmichi/piratenpad-notifications.git
 	cd piratenpad-notifications/
+	mkdir tmp/
 	echo "exports.email = 'user'; 			\
 		  exports.pw = 'pw';      			\
 		  exports.padDomain = 'subdomain'; 	\
