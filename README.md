@@ -11,11 +11,20 @@ This script enables an easy way to keep track. It sends a mail once a new change
 is discovered. The script should be executed via a cronjob.
 
 
+# Todo
+
+ * Unique file names for the temporary files
+ * license notes to request``
+
+
 # Installation
 
 	git clone https://github.com/cmichi/piratenpad-notifications.git
 	cd piratenpad-notifications/
-	echo "exports.email = 'user'; exports.pw = 'pw'; exports.padDomain = 'subdomain'; exports.padId = 1;" > acc.js
+	echo "exports.email = 'user'; 			\
+		  exports.pw = 'pw';      			\
+		  exports.padDomain = 'subdomain'; 	\
+		  exports.padId = 1;" > acc.js
 	
 	# initialize it
 	./check-for-changes.sh john@doe.de ./acc.js
@@ -23,9 +32,13 @@ is discovered. The script should be executed via a cronjob.
 Once initialized you should get a mail. If the script is started again 
 you will only get mails if something changed. 
 
-It might be a good idea to create a cronjob for the script!
+It might be a good idea to create a cronjob for the script:
 
-	15 * * * * ~/piratenpad-notifier/check-for-changes.sh john@doe.de ./acc.js
+	15 * * * * ~/piratenpad-notifier/check-for-changes.sh john@doe.de ./pad1.js
+	15 * * * * ~/piratenpad-notifier/check-for-changes.sh john@doe.de ./pad2.js
+	...
+	
+This way you can easily get notifications for multiple pads.
 		
 
 # License
