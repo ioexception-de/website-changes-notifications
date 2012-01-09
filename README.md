@@ -27,8 +27,8 @@ you will only get mails if something changed.
 
 It might be a good idea to create a cronjob for the script:
 
-	*/15 * * * * cd ~/website-changes-notifications/ && /bin/bash --login ./check-for-changes.sh "john@doe.de" "http://foo.bar/" 
-	*/15 * * * * cd ~/website-changes-notifications/ && /bin/bash --login ./check-for-changes.sh "john@doe.de" "http://foo.bar/" 
+	*/15 * * * * cd ~/website-changes-notifications/simple-webpage/ && /bin/bash --login ./check-for-changes.sh "john@doe.de" "http://foo.bar/" 
+	*/15 * * * * cd ~/website-changes-notifications/simple-webpage/ && /bin/bash --login ./check-for-changes.sh "john@doe.de" "http://foo.bar/" 
 	...
 
 # Piratenpads
