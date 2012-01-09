@@ -1,5 +1,5 @@
 var acc = require(process.argv[2]);
-var request = require('./request/main.js'); 
+var request = require('../lib/request/main.js'); 
 
 var base = 'https://' + acc.padDomain + '.piratenpad.de';
 

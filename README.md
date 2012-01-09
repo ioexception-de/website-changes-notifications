@@ -1,19 +1,41 @@
 # Readme
 
+This project enables an easy way to keep track of website changes.
+It sends a mail once a new change is discovered. The script should be executed 
+as a cronjob.
+
+Currently it supports changes on simple URLs and changes on a "Piratenpad".
+
 The so called "Piratepads" are a comfortable way to collaborate on documents. 
 You can easily set up your own pad via [piratenpad.de](http://piratenpad.de).
-
 I often use the pad for brainstorming and coordinating stuff, but I have lost
 track of the different pads.
 
-This script enables an easy way to keep track. It sends a mail once a new change
-is discovered. The script should be executed as a cronjob.
+
+# Simple Webpage
+
+	git clone https://github.com/ioexception-de/website-changes-notifications.git
+	cd website-changes-notifications/simple-webpage/
+	mkdir tmp/
+
+And initialize it:
+
+	./check-for-changes.sh john@doe.de "http://foo.bar/"
+
+Once initialized you should get a mail. If the script is started again 
+you will only get mails if something changed. 
+
+It might be a good idea to create a cronjob for the script:
+
+	*/15 * * * * cd ~/website-changes-notifications/ && /bin/bash --login ./check-for-changes.sh "john@doe.de" "http://foo.bar/" 
+	*/15 * * * * cd ~/website-changes-notifications/ && /bin/bash --login ./check-for-changes.sh "john@doe.de" "http://foo.bar/" 
+	...
+
+# Piratenpads
 
 
-# Installation
-
-	git clone https://github.com/ioexception-de/piratenpad-notifications.git
-	cd piratenpad-notifications/
+	git clone https://github.com/ioexception-de/website-changes-notifications.git
+	cd website-changes-notifications/piratenpad/
 	mkdir tmp/
 
 Then create a file `acc.js`:
@@ -32,8 +54,8 @@ you will only get mails if something changed.
 
 It might be a good idea to create a cronjob for the script:
 
-	*/15 * * * * cd ~/piratenpad-notifications/ && /bin/bash --login ./check-for-changes.sh "john@doe.de" "./pad1.js" 
-	*/15 * * * * cd ~/piratenpad-notifications/ && /bin/bash --login ./check-for-changes.sh "john@doe.de" "./pad2.js" 
+	*/15 * * * * cd ~/website-changes-notifications/piratenpad/ && /bin/bash --login ./check-for-changes.sh "john@doe.de" "./pad1.js" 
+	*/15 * * * * cd ~/website-changes-notifications/piratenpad/ && /bin/bash --login ./check-for-changes.sh "john@doe.de" "./pad2.js" 
 	...
 	
 This way you can easily get notifications for multiple pads.
