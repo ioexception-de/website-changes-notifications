@@ -3,8 +3,6 @@
 # 	./check-for-changes.sh john@doe.de "http://foo.bar/"
 #
 
-nodepath=`which node`
-
 # the bash of the configuration-file in ${2} is used 
 # as a name for temporary files
 if [ "$(uname)" = "Linux" ]; 
@@ -20,7 +18,7 @@ fi
 localcopy="./tmp/$tmpfilename".html
 onlinecopy="./tmp/$tmpfilename"_new.html
 
-$nodepath ./notify.js ${2} > $onlinecopy
+curl ${2} > $onlinecopy
 
 # temporary local copy already exists?
 if [ ! -f $localcopy ]
