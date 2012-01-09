@@ -33,7 +33,6 @@ It might be a good idea to create a cronjob for the script:
 
 # Piratenpads
 
-
 	git clone https://github.com/ioexception-de/website-changes-notifications.git
 	cd website-changes-notifications/piratenpad/
 	mkdir tmp/
