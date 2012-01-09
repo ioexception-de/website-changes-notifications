@@ -18,7 +18,7 @@ fi
 localcopy="./tmp/$tmpfilename".html
 onlinecopy="./tmp/$tmpfilename"_new.html
 
-curl ${2} > $onlinecopy
+curl -L ${2} > $onlinecopy
 
 # temporary local copy already exists?
 if [ ! -f $localcopy ]
